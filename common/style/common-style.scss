@@ -1,3 +1,13 @@
 view, swiper, swiper-item{
 	box-sizing: border-box;
 }
+
+.pageBg{
+	min-height: 80vh;
+	// 构建渐变色背景,使用线性渐变，越靠近background的就越在上层
+	background: 
+	// transparent设置透明属性
+	linear-gradient(to bottom, transparent, #fff 400rpx), 
+	linear-gradient(to right, #beecd8 20%, #f4e2d8);
+	
+}

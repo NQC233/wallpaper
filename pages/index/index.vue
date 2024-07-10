@@ -1,5 +1,8 @@
 <template>
-	<view class="homeLayout">
+	<view class="homeLayout pageBg">
+		
+		<!-- 自定义头部导航组件 -->
+		<custom-nav-bar title="推荐"></custom-nav-bar>
 		
 		<!-- 横幅部分 -->
 		<view class="banner">
@@ -20,7 +23,7 @@
 		<!-- 公告部分 -->
 		<view class="notice">
 			<view class="left">
-				<uni-icons type="sound-filled" size="20" color="#28b389"></uni-icons>
+				<uni-icons type="sound-filled" size="20"></uni-icons>
 				<text class="text">公告</text>
 			</view>
 			<view class="center">
@@ -28,7 +31,7 @@
 					<swiper-item v-for="item in 3">欢迎访问</swiper-item>
 				</swiper>
 			</view>
-			<view class="right">
+			<view class="right"> 
 				<uni-icons type="right" size="16" color="#333"></uni-icons>
 			</view>
 			
@@ -40,7 +43,7 @@
 				<template #name>每日推荐</template>
 				<template #custom>
 					<view class="date">
-						<uni-icons type="calendar" size="18" color="#28b389"></uni-icons>
+						<uni-icons type="calendar" size="18"></uni-icons>
 						<view class="text">
 							<uni-dateformat :date="Date.now()" format="dd日"></uni-dateformat>
 						</view>
@@ -49,7 +52,7 @@
 			</common-title>
 			<view class="content">
 				<scroll-view :scroll-x="true">
-					<view class="box" v-for="item in 8">
+					<view class="box" @click="goPreview" v-for="item in 8">
 						<image src="../../common/images/preview_small.webp" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
@@ -61,7 +64,7 @@
 			<common-title>
 				<template #name>专题精选</template>
 				<template #custom>
-					<navigation url="" class="more">More</navigation>
+					<navigator url="" class="more">More</navigator>
 				</template>
 			</common-title>
 			
@@ -76,7 +79,12 @@
 </template>
 
 <script setup>
-	
+
+const goPreview = ()=>{
+	uni.navigateTo({
+		url:"/pages/preview/preview"
+	})
+}
 </script>
 
 <style lang="scss" scoped>
@@ -117,9 +125,14 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				:deep(){
+					.uni-icons{
+						color: $brand-theme-color !important;
+					}
+				}
 				
 				.text{
-					color: #28b389;
+					color: $brand-theme-color;
 					font-weight: 600;
 					font-size: 28rpx;
 				}
@@ -156,9 +169,14 @@
 			padding-top: 50rpx;
 			
 			.date{
-				color: #28b389;
+				color: $brand-theme-color;
 				display: flex;
 				align-items: center;
+				:deep(){
+					.uni-icons{
+						color: $brand-theme-color !important;
+					}
+				}
 				
 				.text{
 					margin-left: 5rpx;
